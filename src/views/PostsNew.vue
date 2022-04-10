@@ -1,5 +1,5 @@
 <template>
-  <div class="posts-new">
+  <div class="home">
     <h1>New Post</h1>
     <form v-on:submit.prevent="createPost()">
       <ul>

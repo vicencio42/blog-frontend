@@ -1,10 +1,11 @@
 <template>
-  <div class="posts">
+  <div class="home">
     <h1>{{ message }} count: {{ posts.length }}</h1>
     <div v-for="post in posts" v-bind:key="post.id">
       <h2>{{ post.title }}</h2>
       <p>{{ post.body }}</p>
       <img v-bind:src="post.image" v-bind:alt="post.title" />
+      <router-link v-bind:to="`/posts/${post.id}`">Show Info</router-link>
     </div>
   </div>
 </template>
