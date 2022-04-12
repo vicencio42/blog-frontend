@@ -8,6 +8,8 @@
     <router-link to="/posts">Back to All Posts</router-link>
   </div>
   <router-link v-bind:to="`/posts/${post.id}/edit`">Edit Recipe</router-link>
+  <br />
+  <button v-on:click="destroyPost()">Delete</button>
 </template>
 
 <script>
@@ -23,6 +25,14 @@ export default {
     axios.get(`/posts/${this.$route.params.id}`).then((response) => {
       this.post = response.data;
     });
+  },
+  methods: {
+    destroyPost() {
+      axios.delete(`/posts/${this.post.id}`).then((response) => {
+        console.log(response);
+        this.$router.push("/posts");
+      });
+    },
   },
 };
 </script>
