@@ -7,6 +7,7 @@
     <br />
     <router-link to="/posts">Back to All Posts</router-link>
   </div>
+  <router-link v-bind:to="`/posts/${post.id}/edit`">Edit Recipe</router-link>
 </template>
 
 <script>
