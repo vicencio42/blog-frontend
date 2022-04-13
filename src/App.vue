@@ -21,13 +21,13 @@
           <li class="nav-item">
             <a class="nav-link" href="/blogs">Blogs</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
+          <li v-if="!isLoggedIn" key="" class="nav-item">
             <a class="nav-link" href="/signup">Sign Up</a>
           </li>
-          <li class="nav-item">
+          <li v-if="!isLoggedIn" class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li v-if="isLoggedIn" class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
           </li>
           <li class="nav-item">
@@ -43,6 +43,20 @@
 
   <router-view />
 </template>
+<script>
+export default {
+  data: function () {
+    return {
+      isLoggedIn: false,
+    };
+  },
+  watch: {
+    $route: function () {
+      this.isLoggedIn = !!localStorage.jwt;
+    },
+  },
+};
+</script>
 
 <style>
 #app {
